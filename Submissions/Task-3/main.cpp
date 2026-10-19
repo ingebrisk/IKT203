@@ -45,6 +45,7 @@ int power(int base, int exponent){
 // Time: O(2^n), each call makes two new calls (int a and int b), so the number of calls dubles.
 // Space: O(n), a finishes before b starts, so at most n calls are waiting at the same time.
 // naive recursive solution is inefficient since it calculate the same position multiple times.  
+// improvement:  store calculated values or in loop. 
 int fibonacci(int n){
     if(n <= 0){
         return 0;
@@ -80,8 +81,8 @@ int findLargestElement(int arr[], int size){
 
 // Time: O(n), one call for each letter 
 // Space: O(n), each call waits for the next one to finish. 
-// Before the recursive call it prints A B C D E
-// after the call it writes the same just in reverse, E D C B A 
+// Before the recursive call it prints A B C D E (the call stack is built)
+// after the call it writes the same just in reverse, E D C B A (the call stack unwinds)
 void traverseAsciiTable(char start, char end){
     if (start > end){
         return;
