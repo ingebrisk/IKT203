@@ -24,8 +24,8 @@ int calculateFactorial(int n){
     return n * calculateFactorial(n-1);
 }
 
-// Time: O(log n), the job length increases slowly 
-// Space: O(log n)
+// Time: O(log n), we cut the exponent in half each time, so there are few calls.
+// Space: O(log n), few calls means few calls waiting on the stack.
 int power(int base, int exponent){
     if(exponent == 0){
         return 1;
