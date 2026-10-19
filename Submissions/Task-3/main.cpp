@@ -31,7 +31,7 @@ int power(int base, int exponent){
         return 1;
     }
 
-    //  Instead of multiplying the base n times (n recursive calls), we halve the recursive call.(eks. base*base*base*... we can do: (x^(n/2))^2 for even numbers and x*(x^(n/2))^2 for odd exponent numbers) 
+    //  Instead of multiplying the base n times (n recursive calls), we halve the recursive call.(e.g. base*base*base*... we can do: (x^(n/2))^2 for even numbers and x*(x^(n/2))^2 for odd exponent numbers) 
     if (exponent % 2 == 0)
 	{
 		int halfPower = power(base, exponent / 2);
@@ -67,10 +67,10 @@ int countOccurrences(string s, char c){
 // Time: O(n), each elemet get checked once. 
 // Space: O(log n), we cut the arrray in half each time, so only a few calls wait at once. 
 int findLargestElement(int arr[], int size){
-    if(size == 1){
-        return arr[0];
-    }else if (size < 1 || arr == nullptr){
+    if (size < 1 || arr == nullptr){
         return 0; // problem, if 0 is the highest number
+    }else if(size == 1){
+        return arr[0];
     }
     int mid = size/2;
     int maxLeft = findLargestElement(arr,mid);
@@ -80,6 +80,8 @@ int findLargestElement(int arr[], int size){
 
 // Time: O(n), one call for each letter 
 // Space: O(n), each call waits for the next one to finish. 
+// Before the recursive call it prints A B C D E
+// after the call it writes the same just in reverse, E D C B A 
 void traverseAsciiTable(char start, char end){
     if (start > end){
         return;
@@ -114,9 +116,9 @@ int main()
     cout << "2^4 = "<< power(2,4) << endl;
     cout << endl;
     cout << "--------  Task 4  ------- " << endl;
-    int verdi = 12;
-    cout << "The "<< to_string(verdi) << " first fibonacci numbers: "<< endl;
-    for (int i = 0; i <= verdi-1; i++){
+    int count = 12;
+    cout << "The "<< to_string(count) << " first fibonacci numbers: "<< endl;
+    for (int i = 0; i <= count-1; i++){
         cout << fibonacci(i) << " ";
     }
     cout << endl;
