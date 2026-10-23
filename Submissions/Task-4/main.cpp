@@ -26,9 +26,9 @@ public:
 	}
 
 	// Time: O(1) , Space: O(1)
-	void Push(int aitem){
+	void Push(int aItem){
 		if(top < MAX_SIZE - 1){
-			array[++top] = aitem;
+			array[++top] = aItem;
 		}
 	}
 
@@ -232,8 +232,8 @@ int SearchDepthFirst(int aGrid[GRID_SIZE][GRID_SIZE], int aStartRow, int aStartC
 	return -1;
 }
 
-// Time: O(n^2), since it Enqueue and Dequeue n x n cells at the time. 
-// Space: O(n^2), and the queue holds several n^2 at the time
+// Time: O(n^2), since it can Enqueue and Dequeue n x n cells. 
+// Space: O(n^2), and the queue can hold up to n^2 at the time.
 // SearchBreadthFirst uses FIFO, First in First out algorytem. this means that the first position in is also the first position out from the queue when dequeue. In this function it start with start the random start position that is given in main and then it checks the position over, then to the right, then the under and at last the position to the left, just like a clock. This is decided because of the order neighbors is set up. after it has read/dequeu the first position it will dequeue the position over since it was the first in after the first position following the FIFO principle. but it wont just dequeue the up position it will read the same clock wise pattern just ecluding the already visited positions befor adding the, to the end of the queue. This makes the algorytme check every first step before it checks every second step out from the start point. 
 int SearchBreadthFirst(int aGrid[GRID_SIZE][GRID_SIZE], int aStartRow, int aStartCol){
 	TQueue queue;
@@ -266,12 +266,12 @@ int SearchBreadthFirst(int aGrid[GRID_SIZE][GRID_SIZE], int aStartRow, int aStar
 	return -1;
 }
 
-//______________________COMPAIR___________________________________
-// The key difference between SearchBreadthFirst and SearchDepthFirst was how they search the grid. The SearchDepthFirst used the Last In First Ot principle and moved around like a snake (move one direction until it hit a wall). While the SearchBreadthFirst used First In First Out principle to find the 0 value. The movement pattern for FIFO is more like a "impact explotion", starting from senter and gradually check everything around itself in all directions. This makes the SearchBreadthFirst (FIFO) will always look for the closest 0 and the SearchDepthFirst (LIFO) will find a 0, but not necessarily the closest one.
+//______________________COMPARE___________________________________
+// The key difference between SearchBreadthFirst and SearchDepthFirst is how they search the grid. The SearchDepthFirst used the Last In First Out principle and moves around like a snake (move one direction until it hits a wall). While the SearchBreadthFirst uses First In First Out principle to find the 0 value. The movement pattern for FIFO is more like a "impact explotion", starting from senter and gradually checks everything around itself in all directions. This makes the SearchBreadthFirst (FIFO) will always look for the closest 0 and the SearchDepthFirst (LIFO) will find a 0, but not necessarily the closest one.
 
 //___________________WHEN_TO_USE_WHAT_________________________
-// The SearchBreadthFirst is effectiv if you want to find the closes path from one point to another, since it checks the next step in all directions before it takes the next step,  while SearchDepthFirst finds a path, but not necessarily the shortest one.
-// The SearchDepthFirst is better if you want a solution that is futher away, and use often less memmory and are more sufficent for graph algorythm. 
+// The SearchBreadthFirst is effectiv if you want to find the closest path from one point to another, since it checks the next step in all directions before it takes the next step,  while SearchDepthFirst finds a path, but not necessarily the shortest one.
+// The SearchDepthFirst is better if you want a solution that is further away, and often ues less memory.
 
 
 
