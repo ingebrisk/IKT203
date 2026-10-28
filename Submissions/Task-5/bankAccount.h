@@ -47,7 +47,7 @@ public:
 	string GetAccountNumber(){
 		return accountNumber;
 	}
-	string GetOwnerFirsName(){
+	string GetOwnerFirstName(){
 		return ownerFirstName;
 	}
 	string GetOwnerLastName(){

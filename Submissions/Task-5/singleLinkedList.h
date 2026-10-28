@@ -12,6 +12,9 @@ struct SearchSummary {
 // 2.5
 typedef bool (*FCompareAccount)(TBankAccount* account, void* searchKey);
 
+// 4.11 - helper typdef function 
+typedef void (*FForEachAccount)(TBankAccount* account);
+
 //1.3
 class TBankNode{
 private:
@@ -80,6 +83,7 @@ public:
 		tail = newNode;
 	};
 
+
 	// 2.6
 	TBankAccount* Find(FCompareAccount aOnCompare, void* searchKey, SearchSummary& summary){
 		clock_t start = clock(); 
@@ -117,4 +121,13 @@ public:
 		summary.timeSpentMs = CalculatTimeMs(start, end);
 		return result;
 	};
+
+    void ForEach(FForEachAccount aAction) {
+        TBankNode* current = head;
+        while (current != nullptr) {
+            aAction(current->GetAccount());
+            current = current->GetNext();
+        }
+    }
+
 };

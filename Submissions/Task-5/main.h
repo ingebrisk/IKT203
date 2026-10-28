@@ -52,3 +52,14 @@ time_t GenerateRandomTimestamp(){
 }
 
 
+time_t CreateTimestamp(int year, int month, int day, int hour, int minute, int second) {
+    tm date = {};
+    date.tm_year = year - 1900;
+    date.tm_mon = month - 1;     // so 1 = January, like on a calendar
+    date.tm_mday = day;
+    date.tm_hour = hour;
+    date.tm_min = minute;
+    date.tm_sec = second;
+    date.tm_isdst = -1;          // let the system decide summer time
+    return mktime(&date);
+}
