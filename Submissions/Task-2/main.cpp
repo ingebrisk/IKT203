@@ -2,8 +2,6 @@
 #include <iostream>
 using namespace std;
 
-
-
 class TMovie{
 private: 
   string title;
@@ -158,7 +156,7 @@ public:
     TMovieNode* prevMovie = head;
 
     if (index < 0){
-      cout << "no valid input"<<endl; return;
+       return;
     }else{
     for(int i = 0; i < index; i++){
         prevMovie = prevMovie->GetNext();
@@ -197,8 +195,6 @@ TMovie* SearchFor(FCheckMovie check, void* criteria) {
 }
 
 };  
-
-
 
 
 bool SearchByTitle(TMovie* movie, void* criteria) {

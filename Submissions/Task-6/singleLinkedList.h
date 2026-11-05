@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream> 
 #include <string>
-#include "singleLinkedList.h"
+#include <ctime>
+#include "bankAccount.h"
 using namespace std;
 
 // SAME CODE AS FROM TASK 5 
@@ -84,6 +85,29 @@ public:
 		tail = newNode;
 	};
 
+    void Remove(TBankAccount* account){
+        if (head == nullptr) return;   
+        TBankNode* current = head;
+
+        if (head->GetAccount() == account){
+            TBankNode* temp = head;
+            head = head->GetNext();
+            if (head == nullptr) tail = nullptr;     
+            delete temp;
+            return;
+        }
+
+        while (current->GetNext() != nullptr){
+            if (current->GetNext()->GetAccount() == account){
+                TBankNode* temp = current->GetNext();
+                current->SetNext(temp->GetNext());
+                if (temp == tail) tail = current;    
+                delete temp;
+                return;
+            }
+        current = current->GetNext();
+        }
+    }
 
 	TBankAccount* Find(FCompareAccount aOnCompare, void* searchKey, SearchSummary& summary){
 		clock_t start = clock(); 
@@ -129,4 +153,7 @@ public:
         }
     }
 
+    TBankNode* GetHead(){
+        return head;
+    }
 };
