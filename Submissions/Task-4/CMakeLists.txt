@@ -1,7 +1,12 @@
-cmake_minimum_required(VERSION 3.10)
-project(Submission4)
+# 1. Define the executable name
+# This is what the students will run (e.g., Task-3.exe)
+add_executable(Task-4 main.cpp)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+# 2. Link the Common Library
+# This command connects the executable to your StructureReader code.
+# Because we used 'PUBLIC' in the reader's setup, Task-4 
+# automatically knows where to find "StructureReaderLib.h".
+target_link_libraries(Task-4 PRIVATE StructureReader)
 
-add_executable(Submission4 main.cpp)
+# 3. Handle the Data Files (The "Structure" folder) use excaped quotes to be Linux friendly
+target_compile_definitions(Task-4 PRIVATE STRUCTURE_DIR=\"${STRUCTURE_PATH}\")
